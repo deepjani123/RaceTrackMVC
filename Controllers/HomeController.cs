@@ -26,5 +26,6 @@ namespace RaceTrackMVC.Controllers
 
             return View();
         }
+       
     }
 }
