@@ -65,19 +65,38 @@
         </div>
     </div>
 }
+<div class="container">
+    <div class="row">
+        <div class="table-responsive col-md-6">
+            <table id="tblVehicle" class="table table-bordered table-striped table-responsive table-hover">
+                <thead title="Vehicle">
+                    <tr>
+                        <th align="left" class="productth">Id</th>
+                        <th align="left" class="productth">Vehicle Name</th>
+                        <th align="left" class="productth">Vehicle Type</th>
+                        <th align="left" class="productth">Add to Track</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
 
-<div>
-    <table id="tblVehicle" class="table table-bordered table-striped table-responsive table-hover">
-        <thead>
-            <tr>
-                <th align="left" class="productth">Id</th>
-                <th align="left" class="productth">Vehicle Name</th>
-                <th align="left" class="productth">Vehicle Type</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+        <div class="table-responsive col-md-6">
+            <table id="tblTrack" class="table table-bordered table-striped table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th align="left" class="productth">Id</th>
+                        <th align="left" class="productth">Vehicle Name</th>
+                        <th align="left" class="productth">Track Name</th>
+                        <th align="left" class="productth">Remove from Track</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -103,29 +122,98 @@
         });
     window.onload = function () {
         LoadData();
+        LoadTrackData();
     };
-       function LoadData() {
-           $("#tblVehicle tbody tr").remove();
+    function LoadData() {
+          $("#tblVehicle tbody tr").remove();
         $.ajax({
             type: 'GET',
             url: '@Url.Action("getvehicles")',
             dataType: 'json',
             success: function (data) {
-                var items = '';
                 $.each(data.data, function (i, item) {
                     var rows = "<tr>"
                         + "<td class='prtoducttd'>" + item.Id + "</td>"
-                    + "<td class='prtoducttd'>" + item.Name + "</td>"
-                    + "<td class='prtoducttd'>" + item.Type + "</td>"
+                        + "<td class='prtoducttd'>" + item.Name + "</td>"
+                        + "<td class='prtoducttd'>" + item.Type+ "</td>"
+                        + "<td class='btn-block'> <a class='btn btn-success text-white' href='/racetrack/index' onClick=AddtoTrack("+ item.Id +")> Add To Track</button> </td>"
                     + "</tr>";
                     $('#tblVehicle tbody').append(rows);
                 });
             },
             error: function (ex) {
-                var r = jQuery.parseJSON(response.responseText);
-                alert("Message: " + r.Message);
-                alert("StackTrace: " + r.StackTrace);
-                alert("ExceptionType: " + r.ExceptionType);
+                //var r = jQuery.parseJSON(response.responseText);
+                //alert("Message: " + r.Message);
+                //alert("StackTrace: " + r.StackTrace);
+                //alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+    }
+
+    function LoadTrackData() {
+         $("#tblTrack tbody tr").remove();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetVehicleOnTrack")',
+            dataType: 'json',
+            success: function (data) {
+                var items = '';
+                $.each(data.data, function (i, item) {
+                    var rows = "<tr>"
+                        + "<td class='prtoducttd'>" + item.vehicleId + "</td>"
+                        + "<td class='prtoducttd'>" + item.vehicleName + "</td>"
+                        + "<td class='prtoducttd'>" + item.trackName + "</td>"
+                        + "<td class='btn-block'> <a class='btn btn-danger text-white' href='/racetrack/index' onClick=RemoveFromTrack(" + item.vehicleId + ")> Remove From Track</button> </td>"
+                    + "</tr>";
+                    $('#tblTrack tbody').append(rows);
+                });
+            },
+            error: function (ex) {
+                //var r = jQuery.parseJSON(response.responseText);
+                //alert("Message: " + r.Message);
+                //alert("StackTrace: " + r.StackTrace);
+                //alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+    }
+
+    function AddtoTrack(vehicleId) {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("AddToTrack")',
+            data: { VehicleId: vehicleId },
+            dataType: 'json',
+            success: function (data) {
+                alert(data.message);
+            },
+            error: function (ex) {
+                console.log(vehicleId);
+                //var r = jQuery.parseJSON(response.responseText);
+                //alert("Message: " + r.Message);
+                //alert("StackTrace: " + r.StackTrace);
+                //alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+    }
+
+        function RemoveFromTrack(vehicleId) {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("RemoveFromTrack")',
+            data: { VehicleId: vehicleId },
+            dataType: 'json',
+            success: function (data) {
+                //alert(data.message);
+            },
+            error: function (ex) {
+                console.log(vehicleId);
+                //var r = jQuery.parseJSON(response.responseText);
+                //alert("Message: " + r.Message);
+                //alert("StackTrace: " + r.StackTrace);
+                //alert("ExceptionType: " + r.ExceptionType);
             }
         });
         return false;
