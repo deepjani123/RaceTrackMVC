@@ -169,7 +169,6 @@
       <DependentUpon>202008170219030_AddtoDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ITrackDBContext.cs" />
     <Compile Include="Models\Track\Track.cs" />
     <Compile Include="Models\TrackDBContext.cs" />
     <Compile Include="Models\VehicleTrack.cs" />

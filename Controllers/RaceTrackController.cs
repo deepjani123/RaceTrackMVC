@@ -38,7 +38,7 @@ namespace RaceTrackMVC.Controllers
         public ActionResult AddVehicle(Vehicle vehicle)
         {
             if (vehicle.Type == null)
-                return View();
+                return View("Index");
 
 
             Vehicle = vehicle;
