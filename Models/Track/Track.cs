@@ -8,15 +8,10 @@ namespace RaceTrackMVC.Models
 {
     public class Track
     {
-
-        public Track()
-        {
-            this.Vehicles = new HashSet<Vehicle>();
-        }
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<Vehicle> Vehicles { get; set; }
+        public IList<VehicleTrack> VehicleTracks { get; set; }
     }
 }

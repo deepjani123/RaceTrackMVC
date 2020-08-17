@@ -20,38 +20,37 @@ namespace RaceTrackMVC.Controllers
         }
 
         // GET: RaceTrack
-        public ActionResult Index(Vehicle vehicle)
+        public ActionResult Index()
         {
-            if (vehicle.Type==null)
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult GetVehicles()
+        {
+            return Json(new { data = _trackDBContext.Vehicles.ToList() }, JsonRequestBehavior.AllowGet);
+
+            
+        }
+
+        [HttpPost]
+        public ActionResult AddVehicle(Vehicle vehicle)
+        {
+            if (vehicle.Type == null)
                 return View();
+
 
             Vehicle = vehicle;
 
-            //if (vehicle.Count == 0)
-            //    return View();
-            //else
-            //{
-            //    Vehicle.Type = Enum.GetName(typeof(VehicleType),Convert.ToInt32(vehicle["Type"].ToString()));
-            //}
 
-            //Vehicle.Name = vehicle["Name"].ToString();
-            //if(Vehicle.Type=="Truck")
-            //{
-            //    Vehicle.Lift = Convert.ToInt32(vehicle["Lift"].ToString());
-            //    Vehicle.TireWear = 0;
-
-            //}
-            //else
-            //{
-            //    Vehicle.Lift = 0;
-            //    Vehicle.TireWear = Convert.ToInt32(vehicle["Tirewear"].ToString());
-            //}
-
-
-            
+            Vehicle.Type = Enum.GetName(typeof(VehicleType), Convert.ToInt32(Vehicle.Type));
             _trackDBContext.Vehicles.Add(Vehicle);
             _trackDBContext.SaveChanges();
-            return View();
+
+            //to clear previous form data
+            ModelState.Clear();
+            return View("Index");
         }
     }
 }

@@ -10,10 +10,6 @@ namespace RaceTrackMVC.Models
     public class Vehicle
     {
 
-        public Vehicle()
-        {
-            this.Tracks = new HashSet<Track>();
-        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
@@ -32,7 +28,7 @@ namespace RaceTrackMVC.Models
         public bool HasTowStrap { get; set; }
 
 
-        public virtual ICollection<Track> Tracks { get; set; }
+        public IList<VehicleTrack> VehicleTracks { get; set; }
 
     }
 

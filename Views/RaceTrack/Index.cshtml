@@ -1,13 +1,13 @@
 ﻿@model RaceTrackMVC.Models.Vehicle
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Add Vehicle";
 }
 
 <h2>Index</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddVehicle", "RaceTrack", FormMethod.Post, htmlAttributes: new { @id = "frm1" }))
 {
     @Html.AntiForgeryToken()
 
@@ -67,12 +67,25 @@
 }
 
 <div>
+    <table id="tblVehicle" class="table table-bordered table-striped table-responsive table-hover">
+        <thead>
+            <tr>
+                <th align="left" class="productth">Id</th>
+                <th align="left" class="productth">Vehicle Name</th>
+                <th align="left" class="productth">Vehicle Type</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
+<script type="text/javascript">
 
         $(function () {
             $('#Type').on('change', function () {
@@ -88,8 +101,36 @@
                 }
             });
         });
+    window.onload = function () {
+        LoadData();
+    };
+       function LoadData() {
+           $("#tblVehicle tbody tr").remove();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("getvehicles")',
+            dataType: 'json',
+            success: function (data) {
+                var items = '';
+                $.each(data.data, function (i, item) {
+                    var rows = "<tr>"
+                        + "<td class='prtoducttd'>" + item.Id + "</td>"
+                    + "<td class='prtoducttd'>" + item.Name + "</td>"
+                    + "<td class='prtoducttd'>" + item.Type + "</td>"
+                    + "</tr>";
+                    $('#tblVehicle tbody').append(rows);
+                });
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+    }
 
-
-    </script>
+</script>
 
 }

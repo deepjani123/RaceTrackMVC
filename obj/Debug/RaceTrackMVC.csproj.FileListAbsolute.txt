@@ -92,6 +92,5 @@ D:\dotNetPractice\RaceTrackMVC\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\dotNetPractice\RaceTrackMVC\bin\System.Threading.Tasks.Extensions.xml
 D:\dotNetPractice\RaceTrackMVC\bin\Unity.Abstractions.pdb
 D:\dotNetPractice\RaceTrackMVC\bin\Unity.Container.pdb
-D:\dotNetPractice\RaceTrackMVC\obj\Debug\RaceTrackMVC.Migrations.AddtoDb.resources
+D:\dotNetPractice\RaceTrackMVC\obj\Debug\RaceTrackMVC.Migrations.AddtoDB.resources
 D:\dotNetPractice\RaceTrackMVC\obj\Debug\RaceTrackMVC.csproj.GenerateResource.cache
-D:\dotNetPractice\RaceTrackMVC\obj\Debug\RaceTrackMVC.Migrations.InspectiontoDB.resources

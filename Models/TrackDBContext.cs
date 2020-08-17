@@ -12,5 +12,7 @@ namespace RaceTrackMVC.Models
 
         public DbSet<Track> Tracks { get; set; }
 
+        public DbSet<VehicleTrack> VehicleTracks { get; set; }
+
     }
 }

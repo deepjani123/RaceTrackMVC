@@ -7,13 +7,13 @@ namespace RaceTrackMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class InspectiontoDB : IMigrationMetadata
+    public sealed partial class AddtoDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InspectiontoDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddtoDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008162239439_InspectiontoDB"; }
+            get { return "202008170219030_AddtoDB"; }
         }
         
         string IMigrationMetadata.Source

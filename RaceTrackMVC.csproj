@@ -152,18 +152,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008161502143_AddtoDb.cs" />
-    <Compile Include="Migrations\202008161502143_AddtoDb.designer.cs">
-      <DependentUpon>202008161502143_AddtoDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008162239439_InspectiontoDB.cs" />
-    <Compile Include="Migrations\202008162239439_InspectiontoDB.designer.cs">
-      <DependentUpon>202008162239439_InspectiontoDB.cs</DependentUpon>
+    <Compile Include="Migrations\202008170219030_AddtoDB.cs" />
+    <Compile Include="Migrations\202008170219030_AddtoDB.designer.cs">
+      <DependentUpon>202008170219030_AddtoDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ITrackDBContext.cs" />
     <Compile Include="Models\Track\Track.cs" />
     <Compile Include="Models\TrackDBContext.cs" />
+    <Compile Include="Models\VehicleTrack.cs" />
     <Compile Include="Models\Vehicles\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -222,11 +219,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008161502143_AddtoDb.resx">
-      <DependentUpon>202008161502143_AddtoDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008162239439_InspectiontoDB.resx">
-      <DependentUpon>202008162239439_InspectiontoDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008170219030_AddtoDB.resx">
+      <DependentUpon>202008170219030_AddtoDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
