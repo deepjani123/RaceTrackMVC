@@ -8,11 +8,11 @@ namespace RaceTrackMVC.Models
 {
     public class TrackDBContext : DbContext
     {
-        public DbSet<Vehicle> Vehicles { get; set; }
+        public virtual DbSet<Vehicle> Vehicles { get; set; }
 
-        public DbSet<Track> Tracks { get; set; }
+        public virtual DbSet<Track> Tracks { get; set; }
 
-        public DbSet<VehicleTrack> VehicleTracks { get; set; }
+        public virtual DbSet<VehicleTrack> VehicleTracks { get; set; }
 
     }
 }

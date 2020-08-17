@@ -32,8 +32,6 @@ namespace RaceTrackMVC.Controllers
         public ActionResult GetVehicles()
         {
             return Json(new { data = _trackDBContext.Vehicles.ToList() }, JsonRequestBehavior.AllowGet);
-
-            
         }
 
         [HttpPost]
